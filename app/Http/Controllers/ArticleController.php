@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -12,8 +13,27 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::with('author')->get();
+        $articles = Article::with('author')->paginate(10);
         return view('articles.index', compact('articles'));
+    }
+
+    public function myArticles()
+    {
+        // Pastikan user sudah login sebelum melanjutkan
+        if (!Auth::check()) {
+            return redirect()->route('login'); // Ganti dengan route login Anda
+        }
+
+        // Ambil ID user yang sedang login
+        $userId = Auth::id();
+
+        // Ambil semua artikel yang author_id-nya sama dengan ID user
+        $articles = Article::with('author')
+                          ->where('author_id', $userId)
+                          ->get();
+
+        // Kembalikan ke view baru
+        return view('dashboard', compact('articles'));
     }
 
     /**
@@ -21,8 +41,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $users = \app\Models\User::all();
-        return view('articles.create', compact('users'));
+        // $users = \app\Models\User::all();
+        return view('articles.create');
     }
 
     /**
@@ -33,9 +53,12 @@ class ArticleController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'author_id' => 'required|exists:users,id',
         ]);
+
+        $validated['author_id']=Auth::id();
+
         Article::create($validated);
+        
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
 
@@ -53,8 +76,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $users = \App\Models\User::all();
-        return view('articles.edit', compact('article', 'users'));
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -65,8 +87,10 @@ class ArticleController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'author_id' => 'required|exists:users,id',
         ]);
+
+        $validated['author_id']=Auth::id();
+
         $article->update($validated);
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
