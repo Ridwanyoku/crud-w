@@ -16,19 +16,24 @@
                 <h5 class="card-title">Penulis: {{ $article->author->name ?? 'N/A' }}</h5><br>
                 <p style="overflow: auto; white-space: pre-wrap;" class="card-text max-w-8">{{ $article->content }}</p>
                 <hr>
-                <p class="card-text"><small class="text-muted">Dibuat pada: {{ $article->created_at->format('d M Y') }}</small></p>
+                <p class="card-text"><small class="text-muted">Dibuat pada: {{ $article->created_at }}</small></p>
             </div>
         </div>
         <br>
     
         {{-- @if ($article->author->name == {{Auth::user->name()}}) --}}
         {{-- <a href="{{ route('articles.show', $article) }}" class="btn btn-sm btn-info">Lihat</a> --}}
-        <a href="{{ route('articles.edit', $article) }}" style="background: rgb(255, 255, 86)" class="rounded-full  py-2 px-4">Edit</a><br><br>
+        @auth
+        @if (Auth::id() == $article->author_id)
+<a href="{{ route('articles.edit', $article) }}" style="background: rgb(255, 255, 86)" class="rounded-full  py-2 px-4">Edit</a><br><br>
             <form action="{{ route('articles.destroy', $article) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="py-2 px-4 rounded-full" style="background: rgb(238, 89, 89)" onclick="return confirm('Apakah Anda yakin ingin menghapus artikel ini?')">Hapus</button>
             </form>
+        @endif
+    @endauth
+        
         {{-- @endif --}}
     </div>
 </div>
