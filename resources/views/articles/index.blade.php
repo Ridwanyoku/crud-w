@@ -38,7 +38,7 @@
 
                  <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <p style="font-weight: 700">Judul: {{$article->title}}</p>
+                        <p style="font-weight: 700" >Judul: {{$article->title}}</p>
                         <p>Penulis: {{$article->author->name}}</p>
                         <br>
                         <p>{{Str::limit($article->content, $limit = 500, $end = '... Lihat selengkapnya')}}</p>
