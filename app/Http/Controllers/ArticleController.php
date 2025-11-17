@@ -13,7 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('author')->paginate(10);
+        $articles = Article::with('author')->Paginate(10);
         return view('articles.index', compact('articles'));
     }
 

@@ -10,7 +10,7 @@
     <div class="">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             @if ($articles->isEmpty())
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg top-10">
                     <div class="p-6 text-gray-900">
                         Ayo buat P-artikelmu!
                     </div>
@@ -25,7 +25,7 @@
                         <div class="p-6 text-gray-900">
                             <p>Judul: {{$article->title}}</p>
                             <br>
-                            <p>{{Str::limit($article->content, $limit = 500, $end = '... Lihat selengkapnya')}}</p>
+                            <p>{{Str::limit($article->content, $limit = 500, $end = '-~~~-Lihat selengkapnya')}}</p>
                             {{-- <p>{{$article->content}}</p> --}}
                         </div>
                     </div><br>

@@ -33,4 +33,10 @@
             </main>
         </div>
     </body>
+
+    <footer style="height: 8vh" class="bg-white py-80 top-8">
+        <p>
+            yes 2025
+        </p>
+    </footer>
 </html>

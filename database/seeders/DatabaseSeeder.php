@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $this->call([
+        UserSeeder::class, // Pastikan Anda memiliki user di database
+        ArticleSeeder::class, // Membuat 100 artikel
+    ]);
     }
 }

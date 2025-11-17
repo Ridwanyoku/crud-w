@@ -9,7 +9,7 @@
 <div class="container max-w-8xl mx-auto sm:px-6 lg:px-8">
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
         
-        <h1>{{ $article->title }}</h1><br>
+        <h1>Judul: {{ $article->title }}</h1><br>
     
         <div class="card mb-3">
             <div class="card-body">
