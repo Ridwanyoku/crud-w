@@ -34,9 +34,11 @@
         </div>
     </body>
 
-    <footer style="height: 8vh" class="bg-white py-80 top-8">
-        <p>
-            yes 2025
-        </p>
-    </footer>
+    <div class="container max-w-8xl mx-auto sm:px-6 lg:px-8">
+        <footer style="" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <p class="text-black">
+                &copy P-Artikel 2025
+            </p>
+        </footer>
+    </div>
 </html>
