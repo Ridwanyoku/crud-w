@@ -33,8 +33,8 @@
                 <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content" name="content" rows="15" required>{{ old('content') }}</textarea>
             </div>
             
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Simpan Artikel</button><br>
-            <a href="{{ route('articles.index') }}" class="button p-2">Kembali</a>
+            <button style="background: rgb(111, 111, 247)" type="submit" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-10">Simpan Artikel</button><br><br> 
+            <a href="{{ route('articles.index') }}" style="background: rgb(160, 160, 160)" class="rounded-full button py-2 px-4">Kembali</a>
         </form>
     </div>
 </div>

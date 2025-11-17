@@ -35,7 +35,7 @@
                 <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content" name="content" rows="15" required>{{ old('content', $article->content) }}</textarea>
             </div>
             
-            <button type="submit" class="btn btn-success">Perbarui Artikel</button>
+            <button style="background: rgb(250, 250, 124)" type="submit" class="rounded-full outline-offset-2 py-2 px-4">Perbarui Artikel</button>
             <a href="{{ route('articles.index') }}" class="btn btn-secondary">Batal</a>
         </form>
     </div>
